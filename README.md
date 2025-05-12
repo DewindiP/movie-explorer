@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+# 🎬 Movie Explorer App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p style="text-align: justify;">Movie Explorer is a React-based application that allows users to browse, search, and view movie details using <strong>TMDB API</strong>. It includes secure Sign In/Sign Up functionality using `localStorage`, custom MUI theming, protected routes, and responsive design.
+</p>
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+- **API Integration**:
+  - The app uses The Movie Database (TMDb) API to fetch movie data.
+  - Example API calls:
+  1. Fetch popular movies:
+      ```bash
+      https://api.themoviedb.org/3/discover/movie?api_key=your_api_key&sort_by=popularity.desc
+      
+  2. Search for movies:
+     ```bash
+     https://api.themoviedb.org/3/search/movie?api_key=your_api_key&query=movie_title
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 🔐 **Authentication**:
+  - Sign Up and Sign In using localStorage
+  - Route protection based on authentication state
+- 🎨 **Material UI Integration**:
+  - Light/Dark Theme toggle
+  - Custom color palette and typography
+- 🎥 **Movie Features**:
+  - Browse a list of movies
+  - View movie details on a separate page
+- 📦 **State Management**:
+  - `useState`, `useContext` for theme and authentication
+- 🌐 **Routing**:
+  - React Router v6 for route management and redirection
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠️ Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React
+- React Router v6
+- Material UI (MUI)
+- Local Storage for user management
+- JavaScript (ES6+)
+- TMDB API (To be configured)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📁 Project Structure
+src/
+├── components/
+│ ├── AuthForm.jsx
+│ └── MovieDetails.jsx
+├── pages/
+│ ├── SignInPage.jsx
+│ ├── SignUpPage.jsx
+│ └── HomePage.jsx
+├── theme/
+│ └── ThemeProvider.jsx
+├── utils/
+│ └── auth.js
+├── App.js
+└── index.js
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🧪 Setup Instructions
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-username/movie-explorer.git
+   cd movie-explorer
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **Install Dependencies**:
+   ```bash
+   npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **Start the Development Server**:
+   ```bash
+   npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Visit the App**:
+   ```bash
+   http://localhost:3000
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📌 How It Works
+**🔐 Authentication**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **SignUpPage.jsx** stores user data (name, email, password) in localStorage.
 
-### Code Splitting
+- **SignInPage.jsx** validates against stored data.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **App.jsx** uses useState to manage isAuthenticated and redirects unauthorized users.
 
-### Analyzing the Bundle Size
+**🌙 Theme Toggle**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **ThemeProvider.jsx** provides a toggle between light and dark modes using MUI's createTheme and useMediaQuery.
 
-### Making a Progressive Web App
+**🧠 Logic Helpers**
+- **Located in utils/auth.js:**
+- register(user)
+- login(email, password)
+- isAuthenticated()
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

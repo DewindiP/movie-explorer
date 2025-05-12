@@ -1,35 +1,47 @@
-import React, { useState } from 'react';
-import AuthForm from '../components/AuthForm';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom"; // Import Link for navigation
+import AuthForm from "../components/AuthForm";
 
-const SignIn = () => {
+const SignIn = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
-  const [inputs, setInputs] = useState({ email: '', password: '' });
+  const [inputs, setInputs] = useState({ email: "", password: "" });
 
   const handleChange = (e) =>
     setInputs({ ...inputs, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const user = JSON.parse(localStorage.getItem('user'));
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+
     if (
-      user &&
-      user.email === inputs.email &&
-      user.password === inputs.password
+      storedUser &&
+      storedUser.email === inputs.email &&
+      storedUser.password === inputs.password
     ) {
-      alert('Login successful!');
-      navigate('/home');
+      setIsAuthenticated(true); // Update authentication state
+      navigate("/"); // Navigate to home page
     } else {
-      alert('Invalid credentials');
+      alert("Invalid email or password!");
     }
   };
 
   const fields = [
-    { label: 'Email', type: 'email', name: 'email', value: inputs.email, onChange: handleChange },
-    { label: 'Password', type: 'password', name: 'password', value: inputs.password, onChange: handleChange },
+    { label: "Email", type: "email", name: "email", value: inputs.email, onChange: handleChange },
+    { label: "Password", type: "password", name: "password", value: inputs.password, onChange: handleChange },
   ];
 
-  return <AuthForm title="Sign In" fields={fields} onSubmit={handleSubmit} buttonText="Login" />;
+  return (
+    <div>
+      <AuthForm title="Sign In" fields={fields} onSubmit={handleSubmit} buttonText="Sign In" />
+      {/* Add a link to the SignUp page */}
+      <p style={{ textAlign: "center", marginTop: "1rem", color: "#BFD8B3" }}>
+        Don't have an account?{" "}
+        <Link to="/signup" style={{ color: "#A678B4", textDecoration: "none" }}>
+          Sign Up
+        </Link>
+      </p>
+    </div>
+  );
 };
 
 export default SignIn;

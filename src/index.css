@@ -1,6 +1,15 @@
 body {
-  background: linear-gradient(to right,#122620, #B5A261 );
+  background: linear-gradient(to right, #210F37, #4B164C, #4F1C51, #522546, #3D365C);
   margin: 0;
   font-family: 'Roboto', sans-serif;
   color: white;
+}
+
+.hero-section {
+  background-image: url('https://via.placeholder.com/1920x600'); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: white;
+  padding: 100px 20px;
 }

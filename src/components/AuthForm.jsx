@@ -41,7 +41,7 @@ const AuthForm = ({ title, fields, onSubmit, buttonText }) => {
              },
                 '& .MuiOutlinedInput-root': {
                   '& fieldset': {
-                    borderColor: '#D4AF37', // Default border color
+                    borderColor: '#621940', // Default border color
                     color: '#0F1A17', // Text color
                   },
                   '&:hover fieldset': {
@@ -63,7 +63,7 @@ const AuthForm = ({ title, fields, onSubmit, buttonText }) => {
           sx={{ 
             color: "#fff",
             fontWeight: "bold",
-            backgroundColor: "#D4AF37", 
+            backgroundColor: "#621940", 
             borderRadius: 2,
             border: "1px solid #fff",
             padding: "10px",
