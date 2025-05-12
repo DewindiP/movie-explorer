@@ -4,7 +4,7 @@ import HeroSection from "../components/HeroSection";
 import MovieRow from "../components/MovieRow";
 import Header from "../components/Header"; // Adjust path if different
 
-
+// API key for TMDB 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const HomePage = () => {
@@ -20,18 +20,22 @@ const HomePage = () => {
   }, [searchQuery]);
 
   return (
+    // Main container for the HomePage
     <Container maxWidth="xl" disableGutters>
         <Header />
         
+       {/* Hero section with title, subtitle, and search bar */}  
       <HeroSection
         title="CineScope"
         subtitle="Discover Your Favorite Films"
         searchQuery={searchQuery}
         onSearchChange={(e) => setSearchQuery(e.target.value)}
       />
-
+       
+       {/* Conditional rendering based on whether a search query exists */}
       {!debouncedSearchQuery ? (
         <>
+         {/* Display rows of movies when no search query is entered */}
           <MovieRow
             title="All Movies"
             fetchUrl={`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&sort_by=popularity.desc`}
@@ -50,6 +54,7 @@ const HomePage = () => {
           />
         </>
       ) : (
+         // Display search results
         <MovieRow
           title={`Search Results for "${debouncedSearchQuery}"`}
           fetchUrl={`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${debouncedSearchQuery}`}

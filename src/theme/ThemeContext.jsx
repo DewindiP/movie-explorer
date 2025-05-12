@@ -12,7 +12,7 @@ const ColorModeContext = createContext();
 // Custom hook to access the color mode context
 export const useColorMode = () => useContext(ColorModeContext);
 
-// Define your light and dark theme settings
+// Define light and dark theme settings
 const getDesignTokens = (mode) => ({
   palette: {
     mode,
@@ -54,6 +54,7 @@ const ThemeProvider = ({ children }) => {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const [mode, setMode] = useState(prefersDarkMode ? "dark" : "light");
 
+  // Toggle color mode function
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () =>
@@ -66,6 +67,7 @@ const ThemeProvider = ({ children }) => {
   const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
 
   return (
+    // Provide the color mode context to the app
     <ColorModeContext.Provider value={colorMode}>
       <MuiThemeProvider theme={theme}>
         <CssBaseline />

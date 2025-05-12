@@ -6,7 +6,7 @@ import Home from "./pages/HomePage";
 import MovieDetails from "./components/MovieDetails";
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication state
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication
 
   return (
     <Router>

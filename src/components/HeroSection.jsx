@@ -54,7 +54,7 @@ const HeroSection = ({ title, subtitle, searchQuery, onSearchChange }) => {
         style={{
           position: "absolute",
           inset: 0,
-          backgroundColor: "rgba(0, 0, 0, 0.5)", // Dark overlay for better text visibility
+          backgroundColor: "rgba(0, 0, 0, 0.5)", // Dark overlay 
         }}
       />
 
@@ -66,7 +66,7 @@ const HeroSection = ({ title, subtitle, searchQuery, onSearchChange }) => {
             fontWeight: "bold",
             fontFamily: "'Cinzel', serif", 
             color: theme.palette.text.primary, 
-            ...fadeInAnimation, // Apply fade-in animation
+            ...fadeInAnimation, // Fade-in animation
           }}
         >
           {title}

@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom"; // Import Link for navigation
 import AuthForm from "../components/AuthForm";
 
-const SignIn = ({ setIsAuthenticated }) => {
+ // Display search results
+  const SignIn = ({ setIsAuthenticated }) => {
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({ email: "", password: "" });
 
+  // Handle input changes and update
   const handleChange = (e) =>
     setInputs({ ...inputs, [e.target.name]: e.target.value });
 
@@ -13,12 +15,13 @@ const SignIn = ({ setIsAuthenticated }) => {
     e.preventDefault();
     const storedUser = JSON.parse(localStorage.getItem("user"));
 
+  // Validate user credentials
     if (
       storedUser &&
       storedUser.email === inputs.email &&
       storedUser.password === inputs.password
     ) {
-      setIsAuthenticated(true); // Update authentication state
+      setIsAuthenticated(true); // Update authentication 
       navigate("/"); // Navigate to home page
     } else {
       alert("Invalid email or password!");

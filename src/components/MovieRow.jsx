@@ -22,7 +22,7 @@ const MovieRow = ({ title, fetchUrl }) => {
         variant="h5"
         gutterBottom
         sx={{
-          color: theme.palette.text.primary, // Dynamically set the title color
+          color: theme.palette.text.primary, // Set the title color
           fontWeight: "bold",
           fontStyle: "Roboto",
           textTransform: "uppercase",
@@ -39,7 +39,7 @@ const MovieRow = ({ title, fetchUrl }) => {
           maxHeight: "800px",
           overflowY: "auto",
 
-          // HIDE SCROLLBAR
+          // Hide Scrollbar
           scrollbarWidth: "none",
           msOverflowStyle: "none",
           "&::-webkit-scrollbar": {

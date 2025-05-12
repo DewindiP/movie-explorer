@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
+// Movie card component to display movie details
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
 
@@ -25,6 +26,7 @@ const MovieCard = ({ movie }) => {
         },
       }}
     >
+      {/* Movie poster */}
       <CardMedia
         component="img"
         height="300"
@@ -32,6 +34,7 @@ const MovieCard = ({ movie }) => {
         alt={movie.title}
       />
       <CardContent>
+        {/* Movie title */}
         <Typography
           variant="subtitle1"
           gutterBottom
@@ -45,6 +48,7 @@ const MovieCard = ({ movie }) => {
           {movie.title}
         </Typography>
 
+        {/* Movie Rating */}
         <Box display="flex" alignItems="center" mb={1}>
           <Rating
             value={movie.vote_average / 2}
@@ -56,7 +60,8 @@ const MovieCard = ({ movie }) => {
             {movie.vote_average.toFixed(1)}
           </Typography>
         </Box>
-
+        
+        {/* More Details Button */}
         <Button
           variant="outlined"
           size="small"
