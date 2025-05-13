@@ -60,8 +60,11 @@ const Header = () => {
         </Box>
 
         {/* Theme toggle icon */}
-        <IconButton onClick={toggleColorMode} color="inherit">
-          {theme.palette.mode === "dark" ? <Brightness7 /> : <Brightness4 />}
+        <IconButton onClick={toggleColorMode} 
+         sx={{
+          color: theme.palette.mode === "dark" ? "#621940" : "#FB773C", // Custom colors for each mode
+        }}>
+          {theme.palette.mode === "dark" ? <Brightness4 /> : <Brightness7 />}
         </IconButton>
       </Toolbar>
     </AppBar>

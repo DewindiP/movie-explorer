@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AuthForm from "../components/AuthForm";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -22,7 +23,14 @@ const SignUp = () => {
     { label: "Password", type: "password", name: "password", value: inputs.password, onChange: handleChange },
   ];
 
-  return <AuthForm title="Create Account" fields={fields} onSubmit={handleSubmit} buttonText="Sign Up" />;
+  return (
+    <div>
+      {/* Add the Header component */}
+      <Header />
+
+    <AuthForm title="Create Account" fields={fields} onSubmit={handleSubmit} buttonText="Sign Up" />;
+    </div>
+  );
 };
 
 export default SignUp;

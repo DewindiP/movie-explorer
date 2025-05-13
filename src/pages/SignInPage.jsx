@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom"; // Import Link for navigation
 import AuthForm from "../components/AuthForm";
+import Header from "../components/Header";
 
  // Display search results
   const SignIn = ({ setIsAuthenticated }) => {
@@ -35,11 +36,14 @@ import AuthForm from "../components/AuthForm";
 
   return (
     <div>
+       {/* Add the Header component */}
+       <Header />
+
       <AuthForm title="Sign In" fields={fields} onSubmit={handleSubmit} buttonText="Sign In" />
       {/* Add a link to the SignUp page */}
-      <p style={{ textAlign: "center", marginTop: "1rem", color: "#BFD8B3" }}>
+      <p style={{ textAlign: "center", marginTop: "1rem", color: "#FB773C" }}>
         Don't have an account?{" "}
-        <Link to="/signup" style={{ color: "#A678B4", textDecoration: "none" }}>
+        <Link to="/signup" style={{ color: "#56021F", textDecoration: "bold" }}>
           Sign Up
         </Link>
       </p>

@@ -13,11 +13,11 @@ const AuthForm = ({ title, fields, onSubmit, buttonText }) => {
         mx: 'auto',
         mt: 8,
         p: 3,
-        border: '1px solid #ccc',
+        border: '3px solid #621940',
         borderRadius: 2,
       }}
     >
-      <Typography variant="h5" align="center">{title}</Typography>
+      <Typography variant="h5" align="center" fontFamily={"'Cinzel', serif"} fontWeight={"bold"}>{title}</Typography>
       <form onSubmit={onSubmit}>
         {fields.map(({ label, type, value, onChange, name }) => (
           <TextField
@@ -33,24 +33,24 @@ const AuthForm = ({ title, fields, onSubmit, buttonText }) => {
                 borderRadius: 2,
                 '& .MuiInputLabel-root': {
                     borderColor: '#0F1A17', // Border color on hover
-                    color: '#BFD8B3', // Default label color
+                    color: '#FB773C', // Default label color
                 },
                 '& .MuiInputLabel-root.Mui-focused': {
-                    borderColor: '#BFD8B3', // Border color on hover
-                    color: '#0F1A17', // Label color when focused
+                    borderColor: '#FB773C', // Border color on hover
+                    color: '#FB773C', // Label color when focused
              },
                 '& .MuiOutlinedInput-root': {
                   '& fieldset': {
                     borderColor: '#621940', // Default border color
-                    color: '#0F1A17', // Text color
+                    color: '#621940', // Text color
                   },
                   '&:hover fieldset': {
-                    borderColor: '#BFD8B3', // Border color on hover
-                    color: '#0F1A17',
+                    borderColor: '#FB773C', // Border color on hover
+                    color: '#FB773C',
                   },
                   '&.Mui-focused fieldset': {
-                    borderColor: '#0F1A17', // Border color when focused
-                    color: '#fff',
+                    borderColor: '#621940', // Border color when focused
+                    color: '#ffff', // Text color
                   },
                 },
                 }}
@@ -68,8 +68,8 @@ const AuthForm = ({ title, fields, onSubmit, buttonText }) => {
             border: "1px solid #fff",
             padding: "10px",
             '&:hover': {
-                backgroundColor: "#BFD8B3" ,
-                color: "#0F1A17",
+                backgroundColor: "#56021F" ,
+                color: "#ffff",
                 fontWeight: "bold",
             },
           }}>

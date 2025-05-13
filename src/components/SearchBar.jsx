@@ -18,7 +18,7 @@ const SearchBar = ({ searchQuery, onSearchChange }) => {
           <InputAdornment position="start">
             <SearchIcon
               style={{
-                color: theme.palette.mode === "dark" ? "#ccc" : "#888", // Change icon color based on theme
+                color: theme.palette.mode === "dark" ? "#ccc" : "#56021F", // Change icon color based on theme
               }}
             />
           </InputAdornment>
@@ -35,7 +35,7 @@ const SearchBar = ({ searchQuery, onSearchChange }) => {
         "& fieldset": { border: "none" }, // Remove the border
         input: {
           padding: "10px 14px",
-          color: theme.palette.text.primary, // Change input text color based on theme
+          color: theme.palette.mode === "dark" ? "#ccc" : "#56021F", // Change input text color based on theme
         },
         boxShadow: 2,
       }}

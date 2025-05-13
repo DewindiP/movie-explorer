@@ -56,7 +56,7 @@ const MovieCard = ({ movie }) => {
             readOnly
             size="small"
           />
-          <Typography ml={1} variant="body2">
+          <Typography ml={1} variant="body2" sx={{ color: "#BFD8B3" }}> 
             {movie.vote_average.toFixed(1)}
           </Typography>
         </Box>
@@ -65,12 +65,14 @@ const MovieCard = ({ movie }) => {
         <Button
           variant="outlined"
           size="small"
+          backgroundColor="#56021F"
           sx={{
             color: "white",
             borderColor: "white",
             "&:hover": {
-              color: "#A678B4",
-              borderColor: "#A678B4",
+              color: "#ffff",
+              borderColor: "#56021F",
+              backgroundColor: "#56021F"
             },
           }}
           onClick={() => navigate(`/movie/${movie.id}`)}
