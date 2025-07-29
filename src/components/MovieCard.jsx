@@ -9,15 +9,17 @@ import {
   Rating,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "@mui/material/styles";
 
 // Movie card component to display movie details
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
+  const theme = useTheme();
 
   return (
     <Card
       sx={{
-        backgroundColor: "#621940",
+        backgroundColor: theme.palette.mode === "dark" ? "#621940" : "#d9832e",
         borderRadius: 3,
         transition: "transform 0.3s ease, box-shadow 0.3s ease",
         "&:hover": {
@@ -41,7 +43,7 @@ const MovieCard = ({ movie }) => {
           sx={{
             fontWeight: "400",
             fontSize: "1.1rem",
-            color: "#BFD8B3", 
+            color: theme.palette.mode === "dark" ? "#BFD8B3" : "#621940",  
             letterSpacing: "0.5px", 
           }}
         >

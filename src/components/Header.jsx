@@ -36,7 +36,7 @@ const Header = () => {
             sx={{
               fontFamily: "'Cinzel', serif",
               fontWeight: "bold",
-              color: theme.palette.text.primary,
+              color: theme.palette.mode === "dark" ? "#BFD8B3" : "#FB773C",
               textShadow: "1px 1px 4px rgba(0,0,0,0.4)",
             }}
           >
@@ -62,7 +62,7 @@ const Header = () => {
         {/* Theme toggle icon */}
         <IconButton onClick={toggleColorMode} 
          sx={{
-          color: theme.palette.mode === "dark" ? "#621940" : "#FB773C", // Custom colors for each mode
+          color: theme.palette.mode === "dark" ? "#BFD8B3" : "#FB773C", // Custom colors for each mode
         }}>
           {theme.palette.mode === "dark" ? <Brightness4 /> : <Brightness7 />}
         </IconButton>

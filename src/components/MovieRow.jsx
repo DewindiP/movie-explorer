@@ -22,7 +22,7 @@ const MovieRow = ({ title, fetchUrl }) => {
         variant="h5"
         gutterBottom
         sx={{
-          color: theme.palette.text.primary, // Set the title color
+          color: theme.palette.mode === "dark" ? "#BFD8B3" : "#FB773C", // Set the title color
           fontWeight: "bold",
           fontStyle: "Roboto",
           textTransform: "uppercase",

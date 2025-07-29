@@ -45,22 +45,63 @@
 
 ---
 
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home Page](screenshots/hmlm.png)
+
+![Home Page](screenshots/hmdm.png)
+
+### 🔍 Movie Search
+![Search Page](screenshots/mslm.png)
+
+![Search Page](screenshots/msdm.png)
+
+### 🎥 Movie Details
+![Movie Details](screenshots/mdlm.png)
+
+![Movie Details](screenshots/mddm.png)
+
+### 🎥 Movie Trailer
+![Movie Trailer](screenshots/mvtrailer.png)
+
+### 🎥 Movie Cards
+![Movie Cards](screenshots/mclm.png)
+
+![Movie Cards](screenshots/mcdm.png)
+
+### 🔐 Sign In / Sign Up
+![Sign In Page](screenshots/silm.png)
+![Sign In Page](screenshots/sidm.png)
+
+![Sign Up Page](screenshots/sulm.png)
+![Sign Up Page](screenshots/sudm.png)
+
+> 📁 Make sure your images are saved inside a `screenshots/` folder in your project directory or uploaded to an image host like GitHub or Imgur if README will be viewed online.
+
+
 ## 📁 Project Structure
 src/
 ├── components/
-│ ├── AuthForm.jsx
-│ └── MovieDetails.jsx
+│   ├── AuthForm.jsx          
+│   ├── Header.jsx
+│   ├── HeroSection.jsx
+│   ├── MovieCard.jsx
+│   ├── MovieDetails.jsx
+│   ├── MovieList.jsx
+│   ├── MovieRow.jsx
+│   ├── MovieSection.jsx
+│   └── SearchBar.jsx
 ├── pages/
-│ ├── SignInPage.jsx
-│ ├── SignUpPage.jsx
-│ └── HomePage.jsx
+│   ├── HomePage.jsx
+│   ├── SignUpPage.jsx
+│   └── SignInPage.jsx       
 ├── theme/
-│ └── ThemeProvider.jsx
+│   └── ThemeContext.jsx
 ├── utils/
-│ └── auth.js
+│   └── auth.js
 ├── App.js
 └── index.js
-
 
 ---
 

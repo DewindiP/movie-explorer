@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useParams, useNavigate } from "react-router-dom"; // Import useNavigate
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import {
   Container,
@@ -11,6 +11,7 @@ import {
   Dialog,
   DialogContent,
   IconButton,
+  useTheme,
 } from "@mui/material";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -20,17 +21,19 @@ import { keyframes } from "@mui/system";
 const fadeIn = keyframes`
   from {
     opacity: 0;
-    transform: translateY(20px); // Start slightly below
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0); // End at the original position
+    transform: translateY(0);
   }
 `;
 
 const MovieDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const theme = useTheme();
+
   const [movie, setMovie] = useState(null);
   const [trailerKey, setTrailerKey] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -43,12 +46,8 @@ const MovieDetails = () => {
     setLoading(true);
     try {
       const [movieRes, videoRes] = await Promise.all([
-        axios.get(
-          `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`
-        ),
-        axios.get(
-          `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`
-        ),
+        axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`),
+        axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`),
       ]);
 
       setMovie(movieRes.data);
@@ -75,12 +74,7 @@ const MovieDetails = () => {
 
   if (loading) {
     return (
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        minHeight="50vh"
-      >
+      <Box display="flex" justifyContent="center" alignItems="center" minHeight="50vh">
         <CircularProgress />
       </Box>
     );
@@ -92,17 +86,24 @@ const MovieDetails = () => {
 
   if (!movie) return null;
 
+  // Define theme-based colors
+  const isDark = theme.palette.mode === "dark";
+  const bgGradient = isDark
+    ? "linear-gradient(to right, #1B1833, #621940)"
+    : "linear-gradient(to right,  #FB773C , #d9832e)";
+  const titleColor = isDark ? "#BFD8B3" : "#BFD8B3";
+  const dateColor = isDark ? "#F5EFFF" : "#F5EFFF";
+  const textColor = isDark ? "#E5D9F2" : "#E5D9F2";
+
   return (
     <div>
-      {/* Add the Header component */}
       <Header />
       <Container maxWidth="md" sx={{ py: 6 }}>
-        {/* Go Back Button */}
         <IconButton
           onClick={() => navigate(-1)}
           sx={{
-            color: "#621940",
-            mb: 2,
+            color: theme.palette.mode === "dark" ? "#621940" : "#FB773C",
+            mt: 1,
           }}
         >
           <ArrowBackIcon />
@@ -110,9 +111,9 @@ const MovieDetails = () => {
 
         <Box
           sx={{
-            backgroundImage: "linear-gradient(to right, #1B1833, #621940)",
+            backgroundImage: bgGradient,
             border: "1px solid #621940",
-            color: "white",
+            color: textColor,
             p: 4,
             borderRadius: 3,
             boxShadow: 3,
@@ -123,7 +124,6 @@ const MovieDetails = () => {
             animation: `${fadeIn} 1s ease-out`,
           }}
         >
-          {/* Left Column: Movie Poster */}
           <CardMedia
             component="img"
             image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -136,21 +136,18 @@ const MovieDetails = () => {
             }}
           />
 
-          {/* Right Column: Movie Details */}
           <Box sx={{ flex: 1 }}>
-            {/* Movie Title */}
             <Typography
               variant="h4"
               gutterBottom
               sx={{
                 fontWeight: "bold",
-                color: "#BFD8B3",
+                color: titleColor,
               }}
             >
               {movie.title}
             </Typography>
 
-            {/* Release Date */}
             <Typography
               variant="body1"
               paragraph
@@ -162,12 +159,12 @@ const MovieDetails = () => {
                 gap: 1,
               }}
             >
-              <strong style={{ color: "#F5EFFF" }}>Release Date:</strong>
+              <strong style={{ color: dateColor }}>Release Date:</strong>
               <Typography
                 variant="body2"
                 sx={{
                   fontSize: "1rem",
-                  color: "#BFD8B3",
+                  color: titleColor,
                   fontWeight: "bold",
                 }}
               >
@@ -179,26 +176,25 @@ const MovieDetails = () => {
               </Typography>
             </Typography>
 
-            {/* Movie Overview */}
             <Typography
               variant="body1"
               paragraph
               sx={{
                 maxWidth: 600,
                 fontSize: "0.9rem",
-                color: "#E5D9F2",
+                color: textColor,
                 textAlign: "justify",
                 borderRadius: 2,
-                p: 3, // Padding
-                boxShadow: 3, // Subtle shadow for depth
+                p: 3,
+                boxShadow: 3,
                 backdropFilter: "blur(10px)",
+                backgroundColor: isDark ? "rgba(255, 255, 255, 0.05)" : "rgba(0,0,0,0.05)",
                 animation: `${fadeIn} 1s ease-out`,
               }}
             >
               {movie.overview}
             </Typography>
 
-            {/* Watch Trailer Button */}
             {trailerKey && (
               <Button
                 variant="contained"
@@ -207,7 +203,7 @@ const MovieDetails = () => {
                 sx={{
                   mt: 2,
                   mr: 2,
-                  backgroundColor: "#621940",
+                  backgroundColor: theme.palette.mode === "dark" ? "#621940" : "#FB773C",
                   "&:hover": { backgroundColor: "#56021F" },
                   borderRadius: 2,
                   px: 4,
@@ -217,7 +213,6 @@ const MovieDetails = () => {
               </Button>
             )}
 
-            {/* Refresh Details Button */}
             <Button
               onClick={fetchMovieDetails}
               variant="outlined"
@@ -237,7 +232,6 @@ const MovieDetails = () => {
           </Box>
         </Box>
 
-        {/* Trailer Dialog */}
         <Dialog
           open={openTrailer}
           onClose={() => setOpenTrailer(false)}

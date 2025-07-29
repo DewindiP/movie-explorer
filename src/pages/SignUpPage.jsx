@@ -24,7 +24,18 @@ const SignUp = () => {
   ];
 
   return (
-    <div>
+    <div
+      style={{
+      minHeight: "100vh",
+      backgroundImage: 'url("/assets/harry-potter.jpg")', // Use your image path
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+    }}
+  >
       {/* Add the Header component */}
       <Header />
 

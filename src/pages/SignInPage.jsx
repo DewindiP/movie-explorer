@@ -35,7 +35,18 @@ import Header from "../components/Header";
   ];
 
   return (
-    <div>
+    <div
+      style={{
+      minHeight: "100vh",
+      backgroundImage: 'url("/assets/harry potter.jpg")', // Use your image path
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+    }}
+  >
        {/* Add the Header component */}
        <Header />
 
@@ -43,7 +54,7 @@ import Header from "../components/Header";
       {/* Add a link to the SignUp page */}
       <p style={{ textAlign: "center", marginTop: "1rem", color: "#FB773C" }}>
         Don't have an account?{" "}
-        <Link to="/signup" style={{ color: "#56021F", textDecoration: "bold" }}>
+        <Link to="/signup" style={{ color: "white", textDecoration: "bold" }}>
           Sign Up
         </Link>
       </p>

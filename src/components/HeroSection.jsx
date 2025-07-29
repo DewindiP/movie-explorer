@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useEffect, useRef } from "react"; 
 import SearchBar from "./SearchBar";
 import { useTheme } from "@mui/material/styles";
 
 const HeroSection = ({ title, subtitle, searchQuery, onSearchChange }) => {
   const theme = useTheme();
+  const audioRef = useRef(null); 
 
-  // Define keyframes for fade-in animation
+  useEffect(() => {
+    // Try to autoplay on mount
+    const audio = audioRef.current;
+    if (audio) {
+      const playAudio = async () => {
+        try {
+          await audio.play();
+        } catch (err) {
+          console.warn("Autoplay blocked by browser:", err);
+        }
+      };
+      playAudio();
+    }
+  }, []);
+
   const fadeInAnimation = {
     animation: "fadeIn 1.5s ease-out",
     "@keyframes fadeIn": {
@@ -31,6 +46,9 @@ const HeroSection = ({ title, subtitle, searchQuery, onSearchChange }) => {
         paddingTop: "80px",
       }}
     >
+      {/* 🎵 Hidden autoplay audio */}
+      <audio ref={audioRef} src="/audio/Avatar_Film_Theme_Song.mp3" autoPlay hidden loop />
+
       {/* Background YouTube Video */}
       <iframe
         src="https://www.youtube.com/embed/sfUAABzXsKQ?autoplay=1&mute=1&loop=1&playlist=sfUAABzXsKQ"
@@ -54,7 +72,7 @@ const HeroSection = ({ title, subtitle, searchQuery, onSearchChange }) => {
         style={{
           position: "absolute",
           inset: 0,
-          backgroundColor: "rgba(0, 0, 0, 0.5)", // Dark overlay 
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
         }}
       />
 
@@ -64,9 +82,9 @@ const HeroSection = ({ title, subtitle, searchQuery, onSearchChange }) => {
           style={{
             fontSize: "3rem",
             fontWeight: "bold",
-            fontFamily: "'Cinzel', serif", 
-            color: theme.palette.text.primary, 
-            ...fadeInAnimation, // Fade-in animation
+            fontFamily: "'Cinzel', serif",
+            color: theme.palette.mode === "dark" ? "#BFD8B3" : "#FB773C",
+            ...fadeInAnimation,
           }}
         >
           {title}
@@ -76,8 +94,8 @@ const HeroSection = ({ title, subtitle, searchQuery, onSearchChange }) => {
             fontSize: "1.5rem",
             marginBottom: "30px",
             fontFamily: "'Cinzel', serif",
-            color: theme.palette.text.secondary, 
-            animation: "fadeIn 2s ease-out", 
+            color: theme.palette.text.secondary,
+            animation: "fadeIn 2s ease-out",
           }}
         >
           {subtitle}
